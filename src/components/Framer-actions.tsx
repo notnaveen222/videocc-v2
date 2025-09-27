@@ -1,5 +1,6 @@
 "use client";
-import { easeInOut, easeOut, motion } from "motion/react";
+import { easeInOut, easeOut, motion, useInView } from "motion/react";
+import { useEffect, useRef } from "react";
 
 export function HeroImageAnimation({
   children,
@@ -11,10 +12,12 @@ export function HeroImageAnimation({
       initial={{
         opacity: 0,
         y: 100,
+        filter: "blur(4px)",
       }}
       animate={{
         opacity: 1,
         y: 0,
+        filter: "blur(0px)",
       }}
       transition={{
         duration: 0.4,
@@ -58,10 +61,13 @@ export function HeroTextAnimation({ children }: { children: React.ReactNode }) {
       initial={{
         opacity: 0,
         y: 100,
+        filter: "blur(4px)",
       }}
       animate={{
         opacity: 1,
         y: 0,
+
+        filter: "blur(0px)",
       }}
       transition={{
         duration: 0.4,
@@ -115,6 +121,35 @@ export function OpacityAnimation({
         ease: easeOut,
         delay: delay ? delay : 0,
       }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerAnimation({ children }: { children: React.ReactNode }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+  const parentVariants = {
+    hidden: { filter: "blur(10px)", scale: 0.98 },
+    show: {
+      filter: "blur(0px)",
+      scale: 1,
+      transition: {
+        ease: easeOut,
+        duration: 0.3,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      variants={parentVariants}
+      initial="hidden"
+      animate={isInView ? "show" : "hidden"}
+      ref={ref}
+      className="relative w-full flex gap-x-10 justify-center items-center"
     >
       {children}
     </motion.div>

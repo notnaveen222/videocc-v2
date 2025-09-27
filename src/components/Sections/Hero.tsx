@@ -1,16 +1,16 @@
 import Image from "next/image";
-import { ConnectButton, ScrollButton } from "./Buttons";
-import MarqueeText from "./Marquee";
+import { ConnectButton, ScrollButton } from "../Buttons";
+import MarqueeText from "../Marquee";
 import {
   HeroImageAnimation,
   HeroTextAnimation,
   OpacityAnimation,
   WanderImage,
-} from "./Framer-actions";
+} from "../Framer-actions";
 
 export default function Hero() {
   return (
-    <div className="relative w-full flex flex-col justify-center items-center pt-48">
+    <div className="relative w-full flex flex-col justify-center items-center pt-48 mb-20">
       <OpacityAnimation delay={0.3}>
         <div className="bg-white/10 border border-white/30 px-3 py-px rounded-full mb-3">
           WELCOME TO VIDEOCC

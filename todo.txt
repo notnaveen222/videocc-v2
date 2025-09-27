@@ -1,0 +1,1 @@
+remove use client in service card ig
