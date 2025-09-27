@@ -8,7 +8,6 @@ export default function CustomCursor({
 }) {
   const cursorRef = useRef<SVGSVGElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [clicked, setClicked] = useState(false);
   useEffect(() => {
     // Event listener for mouse movement
     const handleMouseMove = (e: MouseEvent) => {

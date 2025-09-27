@@ -1,6 +1,6 @@
 "use client";
-import { easeInOut, easeOut, motion, useInView } from "motion/react";
-import { useEffect, useRef } from "react";
+import { easeOut, motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 export function HeroImageAnimation({
   children,

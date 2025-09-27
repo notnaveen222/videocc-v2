@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "motion/react";
 interface Props {
-  title: String;
-  description: String;
-  tags: String[];
+  title: string;
+  description: string;
+  tags: string[];
   icon: React.ReactNode;
 }
 export default function ServiceCard(props: Props) {

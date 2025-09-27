@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ConnectButton, ScrollButton } from "../Buttons";
+import { ScrollButton } from "../Buttons";
 import MarqueeText from "../Marquee";
 import {
   HeroImageAnimation,

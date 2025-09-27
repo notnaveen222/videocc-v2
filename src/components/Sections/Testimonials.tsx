@@ -68,7 +68,10 @@ export default function TestimonialSection() {
       >
         <Marquee speed={100} ref={marqueeRef}>
           {TESTIMONIALS.map((user, idx) => (
-            <div className="bg-white rounded-3xl flex flex-col px-4 py-2 pb-4  w-sm mr-3">
+            <div
+              key={idx}
+              className="bg-white rounded-3xl flex flex-col px-4 py-2 pb-4  w-sm mr-3"
+            >
               <div className="flex gap-x-2 justify-start mb-2 items-center">
                 <Image
                   src={`/${user.profile}`}

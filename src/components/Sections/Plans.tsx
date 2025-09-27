@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, useRef, useState } from "react";
-import { easeOut, motion, stagger, useInView } from "motion/react";
+import { motion, stagger, useInView } from "motion/react";
 type Plan = {
   title: string;
   icon: ReactNode;
@@ -189,59 +189,5 @@ export default function PlanSection() {
         ))}
       </motion.div>
     </div>
-  );
-}
-
-type PlanCardProps = {
-  plan: Plan;
-  index: number;
-  selectedPlan: number;
-  setSelectedPlan: (index: number) => void;
-};
-function PlanCard({
-  plan,
-  index,
-  selectedPlan,
-  setSelectedPlan,
-}: PlanCardProps) {
-  const selected = index == selectedPlan;
-  return (
-    <motion.div
-      animate={{
-        flexGrow: selectedPlan == index ? 1 : 0,
-        flexBasis: selectedPlan == index ? "auto" : "70px",
-        borderRadius: selectedPlan == index ? "24px" : "16px",
-        writingMode: selectedPlan == index ? "horizontal-tb" : "vertical-rl",
-      }}
-      transition={{
-        delay: 0,
-        duration: 0.3,
-      }}
-      onClick={() => setSelectedPlan(index)}
-      className="flex flex-col border border-white p-5  overflow-hidden h-72 rounded-2xl"
-    >
-      <div className="flex gap-x-5">
-        <div>{plan.icon}</div>
-        <motion.div className="text-nowrap">{plan.title}</motion.div>
-      </div>
-      {selectedPlan == index && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: 0.15,
-            duration: 0.3,
-          }}
-        >
-          {plan.description}
-        </motion.div>
-      )}
-    </motion.div>
   );
 }
