@@ -7,8 +7,21 @@ import {
   OpacityAnimation,
   WanderImage,
 } from "../Framer-actions";
+import { RefObject } from "react";
 
-export default function Hero() {
+export default function Hero({
+  serviceRef,
+  slotRef,
+}: {
+  serviceRef: RefObject<HTMLDivElement | null>;
+  slotRef: RefObject<HTMLDivElement | null>;
+}) {
+  const scrollToServices = () => {
+    serviceRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToSlots = () => {
+    slotRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="relative w-full flex flex-col justify-center items-center pt-48 mb-20">
       <OpacityAnimation delay={0.3}>
@@ -32,8 +45,16 @@ export default function Hero() {
       </OpacityAnimation>
       <OpacityAnimation delay={0.3}>
         <div className="flex gap-x-5 items-center mb-28">
-          <ConnectButton title="Connect" styles="py-1 px-6" />
-          <ScrollButton title="Services" styles="py-1 px-6" />
+          <ScrollButton
+            title="Connect"
+            styles="py-1 px-6 bg-white text-grad-dark-blue"
+            scrollFunction={scrollToSlots}
+          />
+          <ScrollButton
+            title="Services"
+            styles="py-1 px-6"
+            scrollFunction={scrollToServices}
+          />
         </div>
       </OpacityAnimation>
       <div className="absolute top-36 right-[18%]">

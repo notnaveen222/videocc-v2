@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { easeOut, motion, stagger, useInView } from "motion/react";
 type Plan = {
   title: string;
   icon: ReactNode;
@@ -78,34 +78,53 @@ const PLANS: Plan[] = [
 
 export default function PlanSection() {
   const titleRef = useRef(null);
-  const isInView = useInView(titleRef, {
+  const titleIsInView = useInView(titleRef, {
+    once: true,
+    margin: "0px 0px -50px 0px",
+  });
+  const cardsRef = useRef(null);
+  const cardIsInView = useInView(cardsRef, {
     once: true,
     margin: "0px 0px -50px 0px",
   });
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
   return (
-    <div className=" flex flex-col justify-center items-center max-w-7xl mx-auto ">
+    <div className=" flex flex-col justify-center items-center max-w-7xl mx-auto mb-16">
       <motion.div
         initial={{
           opacity: 0,
-          y: 30,
+          y: 10,
         }}
         animate={{
-          opacity: isInView ? 1 : 0,
-          y: isInView ? 0 : 30,
+          opacity: titleIsInView ? 1 : 0,
+          y: titleIsInView ? 0 : 10,
         }}
         ref={titleRef}
         className="text-center font-medium text-5xl mb-16"
       >
         Plans
       </motion.div>
-      <div className="flex gap-x-2 ">
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 200,
+          filter: "blur(10px)",
+        }}
+        ref={cardsRef}
+        animate={{
+          opacity: cardIsInView ? 1 : 0,
+          y: cardIsInView ? 0 : 200,
+          filter: cardIsInView ? "blur(0px)" : "blur(30px",
+        }}
+        transition={{
+          delayChildren: stagger(0.3),
+        }}
+        className="flex gap-x-2 "
+      >
         {PLANS.map((plan, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
             animate={{
-              opacity: 1,
               width: selectedPlan == index ? "1050px" : "64px",
               borderRadius: selectedPlan == index ? "24px" : "16px",
               writingMode:
@@ -117,7 +136,7 @@ export default function PlanSection() {
             }}
             onClick={() => setSelectedPlan(index)}
             className={`flex flex-col border border-white p-5  overflow-hidden h-[400px] bg-linear-to-b from-white/10 to-transparent ${
-              selectedPlan == index ? "" : "justify-center cursor-pointer"
+              selectedPlan == index ? "" : "justify-center "
             }`}
           >
             <div className="flex gap-x-5 items-center mb-5">
@@ -159,7 +178,7 @@ export default function PlanSection() {
                     <div className="text-center text-xl">
                       Got Specific Requirements?
                     </div>
-                    <button className="bg-white text-grad-dark-blue w-fit px-5 py-1 rounded-full text-xl cursor-pointer">
+                    <button className="bg-white text-grad-dark-blue w-fit px-5 py-1 rounded-full text-xl cursor-none ">
                       Connect
                     </button>
                   </div>
@@ -168,7 +187,7 @@ export default function PlanSection() {
             )}
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -199,7 +218,7 @@ function PlanCard({
         duration: 0.3,
       }}
       onClick={() => setSelectedPlan(index)}
-      className="flex flex-col border border-white p-5 cursor-pointer overflow-hidden h-72 rounded-2xl"
+      className="flex flex-col border border-white p-5  overflow-hidden h-72 rounded-2xl"
     >
       <div className="flex gap-x-5">
         <div>{plan.icon}</div>

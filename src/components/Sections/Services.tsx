@@ -3,6 +3,7 @@ import { easeOut } from "motion";
 import { motion } from "motion/react";
 import { OpacityAnimation, StaggerAnimation } from "../Framer-actions";
 import ServiceCard from "../ServiceCard";
+import { RefObject } from "react";
 
 const SERVICES = [
   {
@@ -69,7 +70,11 @@ const SERVICES = [
     tags: ["Responsive", "Animations", "SEO", "E-Commerce"],
   },
 ];
-export default function ServiceSection() {
+export default function ServiceSection({
+  serviceRef,
+}: {
+  serviceRef: RefObject<HTMLDivElement | null>;
+}) {
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOut } },
@@ -78,7 +83,10 @@ export default function ServiceSection() {
     <>
       <div className="mb-20">
         <OpacityAnimation delay={0.3}>
-          <div className="text-center font-medium text-5xl mb-16">
+          <div
+            ref={serviceRef}
+            className="text-center font-medium text-5xl mb-16"
+          >
             Our Services
           </div>
         </OpacityAnimation>
