@@ -86,6 +86,7 @@ export default function Hero({
               alt="Floating Hero Image"
               width={224}
               height={126}
+              priority
               className=" rotate-z-[15deg] shadow-[7px_9px_6px_rgba(0,0,0,0.6)] rounded-xl "
             />
           </HeroImageAnimation>
@@ -99,6 +100,7 @@ export default function Hero({
               alt="Floating Hero Image"
               width={224}
               height={126}
+              priority
               className="-rotate-z-[12deg] shadow-[7px_9px_6px_rgba(0,0,0,0.6)] rounded-xl "
             />
           </HeroImageAnimation>
