@@ -61,8 +61,9 @@ export default function Hero({
       </div>
       <OpacityAnimation delay={0.3}>
         <div className="text-lg max-w-xl text-shadow-[1px_4px_6px_rgba(0,0,0,0.35)] sm:text-shadow-[1px_4px_6px_rgba(0,0,0,0.25)] sm:max-w-2xl font-semibold text-center mb-5">
-          Stop blending in. It's time to grab attention, earn trust, and create
-          a buzz that puts your brand at the center of every conversation.
+          Stop blending in. It&apos;s time to grab attention, earn trust, and
+          create a buzz that puts your brand at the center of every
+          conversation.
         </div>
       </OpacityAnimation>
       <OpacityAnimation delay={0.3}>

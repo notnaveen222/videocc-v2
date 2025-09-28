@@ -1,7 +1,6 @@
 "use client";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { motion, stagger, useInView } from "motion/react";
-import { div } from "motion/react-client";
 type Plan = {
   title: string;
   icon: ReactNode;
