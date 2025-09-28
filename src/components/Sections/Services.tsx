@@ -28,7 +28,7 @@ const SERVICES = [
     tags: ["Responsive", "Animations", "SEO", "E-Commerce"],
   },
   {
-    title: "Digital Design",
+    title: "Digital Marketing",
     description: "Offer an unforgettable user experience",
     icon: (
       <svg

@@ -46,8 +46,10 @@ export default function FaqSection() {
             key={idx}
             className="w-full border px-4 py-3 border-white rounded-2xl flex flex-col gap-y-2 bg-linear-to-b from-white/10 to-transparent"
           >
-            <div className="text-2xl">Q : {faq.question}</div>
-            <div className="text-xl">{faq.answer}</div>
+            <div className="text-lg sm:text-xl font-normal">
+              Q : {faq.question}
+            </div>
+            <div className="text-base sm:text-lg">{faq.answer}</div>
           </div>
         ))}
       </div>

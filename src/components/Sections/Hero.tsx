@@ -8,6 +8,8 @@ import {
   WanderImage,
 } from "../Framer-actions";
 import { RefObject } from "react";
+import { DotPattern, GridPattern } from "../PatternBg";
+import { cn } from "@/lib/utils";
 
 export default function Hero({
   serviceRef,
@@ -25,15 +27,30 @@ export default function Hero({
   return (
     <div className="relative w-full flex flex-col justify-center items-center pt-48 mb-20">
       <OpacityAnimation delay={0.3}>
+        <div className="bg-background left-0 absolute top-0 flex size-full items-center justify-center overflow-hidden z-0 p-20">
+          <GridPattern
+            width={20}
+            height={20}
+            x={-1}
+            y={-1}
+            className={cn(
+              "[mask-image:radial-gradient(600px_250px_at_center,white,transparent)]"
+            )}
+          />
+        </div>
+      </OpacityAnimation>
+      <OpacityAnimation delay={0.3}>
         <div className="bg-white/10 border border-white/30 px-3 py-px rounded-full mb-3">
           WELCOME TO VIDEOCC
         </div>
       </OpacityAnimation>
-      <div className="text-4xl sm:text-8xl text-center leading-10 sm:leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.4)] font-semibold mb-5">
+      <div className="text-4xl sm:text-8xl text-center leading-10 sm:leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.45)] font-medium mb-5">
         <HeroTextAnimation>
           <span>
             We Build <br className="sm:hidden" />
-            Brands <br className="hidden sm:inline" />
+            <span className="italic">
+              Brands <br className="hidden sm:inline" />
+            </span>
           </span>
           <span>
             That
@@ -48,7 +65,7 @@ export default function Hero({
         </div>
       </OpacityAnimation>
       <OpacityAnimation delay={0.3}>
-        <div className="flex gap-x-5 items-center mb-40 sm:mb-36 lg:mb-28">
+        <div className="flex gap-x-5 items-center mb-40 z-20 sm:mb-36 lg:mb-28">
           <ScrollButton
             title="Connect"
             styles="py-1 px-6 bg-white text-grad-dark-blue"

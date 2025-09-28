@@ -34,7 +34,7 @@ export function ScrollButton({
     <button
       onClick={scrollFunction}
       className={twMerge(
-        `bg-grad-dark-blue text-xl text-white rounded-full px-5 py-1.5 cursor-none`,
+        `bg-grad-dark-blue z-20 text-xl text-white rounded-full px-5 py-1.5 cursor-none`,
         styles
       )}
     >
