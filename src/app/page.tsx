@@ -8,13 +8,14 @@ import SlotSection from "@/components/Sections/SlotSection";
 import Footer from "@/components/Sections/Footer";
 import { useRef, useState } from "react";
 import CustomCursor from "@/components/CustomCursor";
+import FaqSection from "@/components/Sections/Faqs";
 export default function Home() {
   const serviceRef = useRef<HTMLDivElement>(null);
   const slotRef = useRef<HTMLDivElement>(null);
   const [cursorVisible, setCursorVisible] = useState<boolean>(true);
 
   return (
-    <div className="h-[330vh] text-white w-screen bg-linear-to-b from-0% via-55% to-85% from-grad-purple via-grad-blue to-grad-dark-blue">
+    <div className="h-fit text-white w-screen bg-linear-to-b from-0% via-55% to-85% from-grad-purple via-grad-blue to-grad-dark-blue">
       <CustomCursor cursorVisible={cursorVisible} />
       <Navbar slotRef={slotRef} />
       <Hero serviceRef={serviceRef} slotRef={slotRef} />
@@ -22,6 +23,7 @@ export default function Home() {
       <PlanSection />
       <TestimonialSection />
       <SlotSection slotRef={slotRef} setCursorVisible={setCursorVisible} />
+      <FaqSection />
       <Footer />
     </div>
   );

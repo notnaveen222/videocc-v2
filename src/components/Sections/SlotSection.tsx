@@ -34,7 +34,7 @@ export default function SlotSection({
     })();
   }, []);
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto mb-16 px-5 lg:px-0">
       <motion.div
         initial={{
           opacity: 0,
@@ -67,7 +67,7 @@ export default function SlotSection({
         <Cal
           namespace="30min"
           calLink="naveen-6i2gww/30min"
-          style={{ width: "100%", height: "100%", overflow: "scroll" }}
+          style={{ width: "100%", height: "100%", overflow: "visible" }}
           config={{ layout: "month_view", theme: "light" }}
         />
       </motion.div>

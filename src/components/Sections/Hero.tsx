@@ -29,12 +29,16 @@ export default function Hero({
           WELCOME TO VIDEOCC
         </div>
       </OpacityAnimation>
-      <div className="text-[96px] text-center leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.4)] font-semibold mb-5">
+      <div className="text-4xl sm:text-8xl text-center leading-10 sm:leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.4)] font-semibold mb-5">
         <HeroTextAnimation>
           <span>
-            We Build Brands <br />
+            We Build <br className="sm:hidden" />
+            Brands <br className="hidden sm:inline" />
           </span>
-          <span>That People Remember.</span>
+          <span>
+            That
+            <br className="sm:hidden" /> People Remember.
+          </span>
         </HeroTextAnimation>
       </div>
       <OpacityAnimation delay={0.3}>
@@ -44,7 +48,7 @@ export default function Hero({
         </div>
       </OpacityAnimation>
       <OpacityAnimation delay={0.3}>
-        <div className="flex gap-x-5 items-center mb-28">
+        <div className="flex gap-x-5 items-center mb-40 sm:mb-36 lg:mb-28">
           <ScrollButton
             title="Connect"
             styles="py-1 px-6 bg-white text-grad-dark-blue"
@@ -57,7 +61,7 @@ export default function Hero({
           />
         </div>
       </OpacityAnimation>
-      <div className="absolute top-36 right-[18%]">
+      <div className="absolute top-4 sm:top-10 lg:top-36 right-[10%] lg:right-[18%]">
         <WanderImage offset={5}>
           <HeroImageAnimation>
             <Image
@@ -70,7 +74,7 @@ export default function Hero({
           </HeroImageAnimation>
         </WanderImage>
       </div>
-      <div className="absolute bottom-10 left-[18%]  z-10">
+      <div className="absolute bottom-14 sm:bottom-10 lg:bottom-10 left-[10%] lg:left-[18%] z-10">
         <WanderImage offset={-5}>
           <HeroImageAnimation>
             <Image

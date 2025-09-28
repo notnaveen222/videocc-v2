@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { motion, stagger, useInView } from "motion/react";
 type Plan = {
   title: string;
@@ -87,6 +87,23 @@ export default function PlanSection() {
     once: true,
     margin: "0px 0px -50px 0px",
   });
+  const [cardWidth, setCardWidth] = useState("");
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        // tablets
+        setCardWidth("380px");
+      } else {
+        // mobiles
+        setCardWidth("550px");
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
   return (
     <div className=" flex flex-col justify-center items-center max-w-7xl mx-auto mb-16">
@@ -119,23 +136,23 @@ export default function PlanSection() {
         transition={{
           delayChildren: stagger(0.3),
         }}
-        className="flex gap-x-2 "
+        className="flex flex-col lg:flex-row  gap-x-2 w-screen sm:w-fit px-5 gap-y-2 lg:gap-y-0"
       >
         {PLANS.map((plan, index) => (
           <motion.div
             key={index}
             animate={{
-              width: selectedPlan == index ? "1050px" : "64px",
+              width: selectedPlan == index ? "1120px" : "64px",
               borderRadius: selectedPlan == index ? "24px" : "16px",
               writingMode:
                 selectedPlan == index ? "horizontal-tb" : "vertical-rl",
             }}
             transition={{
               delay: 0,
-              duration: 0.3,
+              duration: 0.4,
             }}
             onClick={() => setSelectedPlan(index)}
-            className={`flex flex-col border border-white p-5  overflow-hidden h-[400px] bg-linear-to-b from-white/10 to-transparent ${
+            className={`hidden lg:flex flex-col border border-white p-5  overflow-hidden h-[400px] bg-linear-to-b from-white/10 to-transparent ${
               selectedPlan == index ? "" : "justify-center "
             }`}
           >
@@ -160,7 +177,7 @@ export default function PlanSection() {
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.15,
+                  delay: 0.2,
                   duration: 0.35,
                 }}
               >
@@ -182,6 +199,74 @@ export default function PlanSection() {
                       Connect
                     </button>
                   </div>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+        ))}
+        {PLANS.map((plan, index) => (
+          <motion.div
+            key={index}
+            animate={{
+              height: selectedPlan == index ? cardWidth : "64px",
+              borderRadius: selectedPlan == index ? "24px" : "16px",
+            }}
+            transition={{
+              delay: 0,
+              duration: 0.4,
+            }}
+            onClick={() => setSelectedPlan(index)}
+            className={`flex lg:hidden flex-col border  border-white p-5  overflow-hidden  bg-linear-to-b from-white/10 to-transparent ${
+              selectedPlan == index ? "" : "justify-center "
+            }`}
+          >
+            <div
+              className={`flex gap-x-2 sm:gap-x-5 items-center justify-center`}
+            >
+              <div className="bg-white/10 rounded-full p-1.5 w-fit flex justify-center items-center">
+                {plan.icon}
+              </div>
+              <motion.div className="text-nowrap   text-3xl">
+                {plan.title}
+              </motion.div>
+            </div>
+            {selectedPlan == index && (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  filter: "blur(5px)",
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.35,
+                }}
+              >
+                <div className="text-2xl  mb-[30px] mt-5">
+                  {plan.description}
+                </div>
+                <div className="flex flex-wrap mb-5 gap-y-3 gap-x-5 ">
+                  {plan.options.map((option, idx) => (
+                    <div
+                      key={`option-${idx}`}
+                      className="text-2xl bg-white text-grad-dark-blue text-shadow-md rounded-2xl px-10 flex-2 text-center py-3 flex justify-center items-center"
+                    >
+                      {option}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-1 flex-col items-center gap-y-2">
+                  <div className="text-center text-xl">
+                    Got Specific Requirements?
+                  </div>
+                  <button className="bg-white text-grad-dark-blue w-fit px-5 py-1 rounded-full text-xl cursor-none ">
+                    Connect
+                  </button>
                 </div>
               </motion.div>
             )}

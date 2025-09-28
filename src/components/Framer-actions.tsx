@@ -149,7 +149,7 @@ export function StaggerAnimation({ children }: { children: React.ReactNode }) {
       initial="hidden"
       animate={isInView ? "show" : "hidden"}
       ref={ref}
-      className="relative w-full flex gap-x-10 justify-center items-center"
+      className="relative lg:w-7xl  flex flex-col gap-y-5 lg:gap-y-0 px-5 lg:flex-row lg:gap-x-10 justify-between items-center"
     >
       {children}
     </motion.div>

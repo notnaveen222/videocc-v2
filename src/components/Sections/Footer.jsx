@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="max-w-7xl mx-auto flex justify-between mt-24">
+    <div className="max-w-7xl mx-auto flex justify-between mt-24 pb-24 px-5 lg:px-0">
       <div className="text-white/80 font-medium">
         © 2025 vediocc. All rights reserved.
       </div>
-      <div className="flex gap-x-2">
+      <div className="flex items-center gap-x-2">
         <div className="text-white/100">Connect.</div>
         <a
           className="cursor-none"

@@ -39,7 +39,7 @@ export default function TestimonialSection() {
     margin: "0px 0px -50px 0px",
   });
   return (
-    <div className=" flex flex-col justify-center items-center max-w-7xl mx-auto mb-16">
+    <div className=" flex flex-col justify-center items-center  lg:max-w-7xl  mx-auto mb-16  overflow-hidden">
       <motion.div
         initial={{
           opacity: 0,
@@ -64,7 +64,7 @@ export default function TestimonialSection() {
           opacity: marqueeIsInView ? 1 : 0,
           y: marqueeIsInView ? 0 : 30,
         }}
-        className="max-w-7xl mx-auto"
+        className="w-screen lg:max-w-7xl mx-auto"
       >
         <Marquee speed={100} ref={marqueeRef}>
           {TESTIMONIALS.map((user, idx) => (

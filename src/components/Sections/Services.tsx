@@ -90,18 +90,19 @@ export default function ServiceSection({
             Our Services
           </div>
         </OpacityAnimation>
-
-        <StaggerAnimation>
-          <motion.div variants={childVariants}>
-            <ServiceCard {...SERVICES[0]} />
-          </motion.div>
-          <motion.div variants={childVariants}>
-            <ServiceCard {...SERVICES[1]} />
-          </motion.div>
-          <motion.div variants={childVariants}>
-            <ServiceCard {...SERVICES[2]} />
-          </motion.div>
-        </StaggerAnimation>
+        <div className="mx-auto w-screen lg:max-w-7xl">
+          <StaggerAnimation>
+            <motion.div variants={childVariants}>
+              <ServiceCard {...SERVICES[0]} />
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <ServiceCard {...SERVICES[1]} />
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <ServiceCard {...SERVICES[2]} />
+            </motion.div>
+          </StaggerAnimation>
+        </div>
       </div>
     </>
   );
