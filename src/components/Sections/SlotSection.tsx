@@ -65,9 +65,9 @@ export default function SlotSection({
         onMouseLeave={() => setCursorVisible(true)}
       >
         <Cal
-          namespace="30min"
-          calLink="naveen-6i2gww/30min"
-          style={{ width: "100%", height: "100%", overflow: "visible" }}
+          namespace="brand-discovery"
+          calLink="vediocc/brand-discovery"
+          style={{ width: "100%", height: "100%", overflow: "scroll" }}
           config={{ layout: "month_view", theme: "light" }}
         />
       </motion.div>

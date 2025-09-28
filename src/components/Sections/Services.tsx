@@ -29,7 +29,7 @@ const SERVICES = [
   },
   {
     title: "Digital Marketing",
-    description: "Offer an unforgettable user experience",
+    description: "Drive growth through strategies and targeted campaigns",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -46,11 +46,11 @@ const SERVICES = [
         />
       </svg>
     ),
-    tags: ["Responsive", "Animations", "SEO", "E-Commerce"],
+    tags: ["Analytics", "Social Media", "SMM", "Brand Strategy"],
   },
   {
     title: "Video Production",
-    description: "Offer an unforgettable user experience",
+    description: "Bring your vision to life with cinematic storytelling",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const SERVICES = [
         />
       </svg>
     ),
-    tags: ["Responsive", "Animations", "SEO", "E-Commerce"],
+    tags: ["Scripting", "Shooting", "Editing", "Color Grading"],
   },
 ];
 export default function ServiceSection({

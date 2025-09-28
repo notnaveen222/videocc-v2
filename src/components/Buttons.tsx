@@ -12,7 +12,7 @@ export function ConnectButton({
   return (
     <button
       className={twMerge(
-        `bg-white text-xl text-grad-dark-blue rounded-full px-5 py-1.5 cursor-none pointer`,
+        `bg-white text-xl text-grad-dark-blue rounded-full px-5 py-1.5 cursor-none inset-shadow-sm inset-shadow-black pointer`,
         styles
       )}
     >

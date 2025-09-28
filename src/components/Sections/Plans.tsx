@@ -1,11 +1,13 @@
 "use client";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { motion, stagger, useInView } from "motion/react";
+import { div } from "motion/react-client";
 type Plan = {
   title: string;
   icon: ReactNode;
   description: string;
   options: string[];
+  option_description: string[];
 };
 const PLANS: Plan[] = [
   {
@@ -29,6 +31,10 @@ const PLANS: Plan[] = [
     description:
       "We design and develop custom,  SEO-friendly websites that look stunning, perform flawlessly, and convert visitors into customers.",
     options: ["Landing Page", "Full-Stack Site"],
+    option_description: [
+      "Single Page Sites, Product Langing Pages, Booking Pages",
+      "Full-Scale Sites, E-commerce Sites, SAAS Pages",
+    ],
   },
   {
     title: "Video Production",
@@ -50,7 +56,11 @@ const PLANS: Plan[] = [
     ),
     description:
       "We design and develop custom,  SEO-friendly websites that look stunning, perform flawlessly, and convert visitors into customers.",
-    options: ["Short Form", "Long Form"],
+    options: ["One-Time Video", "Monthly Retainer"],
+    option_description: [
+      "Promo Videos, Launch Shoots, Event Coverages",
+      "Scheduled Period Shoots, Regular Coverage, Social Media Content Shoots",
+    ],
   },
   {
     title: "Digital Marketting",
@@ -72,7 +82,11 @@ const PLANS: Plan[] = [
     ),
     description:
       "We design and develop custom,  SEO-friendly websites that look stunning, perform flawlessly, and convert visitors into customers.",
-    options: ["Creator", "Buisness"],
+    options: ["Project-Based", "Ongoing Marketing"],
+    option_description: [
+      "Pre- Launch, Post Launch, Event Specific Marketing",
+      "Weekly, Monthly and Quarterly Retainers",
+    ],
   },
 ];
 
@@ -186,9 +200,14 @@ export default function PlanSection() {
                   {plan.options.map((option, idx) => (
                     <div
                       key={`option-${idx}`}
-                      className="text-2xl bg-white text-grad-dark-blue text-shadow-md rounded-2xl px-10 flex-2 text-center py-3 flex justify-center items-center"
+                      className="flex flex-col bg-white px-2 text-grad-dark-blue rounded-2xl items-center py-2 "
                     >
-                      {option}
+                      <div className="text-2xl bg-white text-grad-dark-blue text-shadow-md rounded-2xl px-10 flex-2 text-center flex justify-center items-center">
+                        {option}
+                      </div>
+                      <span className="text-center w-xs">
+                        {plan.option_description[idx]}
+                      </span>
                     </div>
                   ))}
                   <div className="flex flex-1 flex-col items-center gap-y-2">

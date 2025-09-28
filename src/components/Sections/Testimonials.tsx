@@ -7,21 +7,25 @@ import Marquee from "react-fast-marquee";
 const TESTIMONIALS = [
   {
     name: "Naveen",
+    role: "Freelancer",
     comment: "Vediocc is literally the best agency i have every worked with.",
     profile: "pfp.png",
   },
   {
     name: "Naveen",
+    role: "Freelancer",
     comment: "Vediocc is literally the best agency i have every worked with.",
     profile: "pfp.png",
   },
   {
     name: "Naveen",
+    role: "Freelancer",
     comment: "Vediocc is literally the best agency i have every worked with.",
     profile: "pfp.png",
   },
   {
     name: "Naveen",
+    role: "Freelancer",
     comment: "Vediocc is literally the best agency i have every worked with.",
     profile: "pfp.png",
   },
@@ -79,8 +83,13 @@ export default function TestimonialSection() {
                   height={44}
                   width={44}
                 />
-                <div className="text-xl text-black font-medium">
-                  {user.name}
+                <div className="flex flex-col justify-center gap-y-0">
+                  <div className="text-xl text-black font-medium">
+                    {user.name}
+                  </div>
+                  <div className="text-sm text-black relative -top-1">
+                    {user.role}
+                  </div>
                 </div>
               </div>
               <div className="text-black text-xl">{user.comment}</div>
