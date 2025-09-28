@@ -7,10 +7,10 @@ import {
   OpacityAnimation,
   WanderImage,
 } from "../Framer-actions";
-import { RefObject } from "react";
+import { RefObject, useContext } from "react";
 import { GridPattern } from "../PatternBg";
 import { cn } from "@/lib/utils";
-
+import { cursorHoverContext } from "@/context/cursor-context";
 export default function Hero({
   serviceRef,
   slotRef,
@@ -18,6 +18,7 @@ export default function Hero({
   serviceRef: RefObject<HTMLDivElement | null>;
   slotRef: RefObject<HTMLDivElement | null>;
 }) {
+  const { setCursorHover } = useContext(cursorHoverContext);
   const scrollToServices = () => {
     serviceRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -44,7 +45,7 @@ export default function Hero({
           WELCOME TO VIDEOCC
         </div>
       </OpacityAnimation>
-      <div className="text-4xl sm:text-8xl text-center leading-10 sm:leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.45)] font-medium mb-5">
+      <div className="text-4xl sm:text-8xl text-center overflow-y-hidden leading-10 sm:leading-24 text-shadow-[1px_4px_6px_rgba(0,0,0,0.45)] font-medium mb-5">
         <HeroTextAnimation>
           <span>
             We Build <br className="sm:hidden" />
@@ -65,16 +66,22 @@ export default function Hero({
         </div>
       </OpacityAnimation>
       <OpacityAnimation delay={0.3}>
-        <div className="flex gap-x-5 items-center mb-40 z-20 sm:mb-36 lg:mb-28">
+        <div
+          className="flex gap-x-5 items-center mb-40 z-20 sm:mb-36 lg:mb-28"
+          onMouseEnter={() => setCursorHover(true)}
+          onMouseLeave={() => setCursorHover(false)}
+        >
           <ScrollButton
             title="Connect"
             styles="py-1 px-6 bg-white text-grad-dark-blue"
             scrollFunction={scrollToSlots}
+            setCursorHover={setCursorHover}
           />
           <ScrollButton
             title="Services"
             styles="py-1 px-6"
             scrollFunction={scrollToServices}
+            setCursorHover={setCursorHover}
           />
         </div>
       </OpacityAnimation>

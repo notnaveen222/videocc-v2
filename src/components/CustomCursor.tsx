@@ -1,19 +1,21 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { cursorHoverContext } from "@/context/cursor-context";
+import { useRef, useState, useEffect, useContext } from "react";
 
 export default function CustomCursor({
   cursorVisible,
 }: {
   cursorVisible: boolean;
 }) {
+  const { cursorHover } = useContext(cursorHoverContext);
   const cursorRef = useRef<SVGSVGElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   useEffect(() => {
     // Event listener for mouse movement
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({
-        x: e.clientX,
-        y: e.clientY,
+        x: e.clientX + 10,
+        y: e.clientY + 10,
       });
     };
 
@@ -31,7 +33,9 @@ export default function CustomCursor({
       ref={cursorRef}
       className={`${
         cursorVisible ? "opacity-100" : "opacity-0"
-      } fixed pointer-events-none -translate-x-1/2 -translate-y-1/2 z-50  rounded-full h-6 w-6 invisible md:visible`}
+      } fixed pointer-events-none -translate-x-1/2 -translate-y-1/2 z-50 transition-[scale] duration-75 rounded-full h-6 w-6 invisible md:visible ${
+        cursorHover ? "scale-150" : "scale-100"
+      }`}
       width="100%"
       height="100%"
       viewBox="0 0 24 24"

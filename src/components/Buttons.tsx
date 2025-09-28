@@ -25,13 +25,17 @@ export function ScrollButton({
   title,
   styles,
   scrollFunction,
+  setCursorHover,
 }: {
   title: string;
   styles?: string;
   scrollFunction: () => void;
+  setCursorHover: (cursorHover: boolean) => void;
 }) {
   return (
     <button
+      onMouseEnter={() => setCursorHover(true)}
+      onMouseLeave={() => setCursorHover(false)}
       onClick={scrollFunction}
       className={twMerge(
         `bg-grad-dark-blue z-20 text-xl text-white rounded-full px-5 py-1.5 cursor-none`,

@@ -72,7 +72,6 @@ export function HeroTextAnimation({ children }: { children: React.ReactNode }) {
       transition={{
         duration: 0.4,
         ease: easeOut,
-        staggerChildren: 2,
       }}
     >
       {children}
