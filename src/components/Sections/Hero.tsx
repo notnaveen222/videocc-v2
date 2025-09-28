@@ -8,7 +8,7 @@ import {
   WanderImage,
 } from "../Framer-actions";
 import { RefObject } from "react";
-import { DotPattern, GridPattern } from "../PatternBg";
+import { GridPattern } from "../PatternBg";
 import { cn } from "@/lib/utils";
 
 export default function Hero({
