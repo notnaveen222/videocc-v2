@@ -162,7 +162,7 @@ export default function PlanSection() {
             }}
             transition={{
               delay: 0,
-              duration: 0.4,
+              duration: 0.55,
             }}
             onClick={() => setSelectedPlan(index)}
             className={`hidden lg:flex flex-col border border-white p-5  overflow-hidden h-[400px] bg-linear-to-b from-white/10 to-transparent ${
@@ -190,7 +190,7 @@ export default function PlanSection() {
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.2,
+                  delay: 0.35,
                   duration: 0.35,
                 }}
               >
